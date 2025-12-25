@@ -33,6 +33,7 @@ wheels/
 data/raw/*
 data/processed/*
 !data/.gitkeep
+!data/example_sms_spam.csv
 
 # Models
 models/*.pkl
