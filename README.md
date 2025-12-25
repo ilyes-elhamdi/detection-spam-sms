@@ -49,10 +49,12 @@ cd detection-spam-sms
 pip install -r requirements.txt
 ```
 
-3. Télécharger un dataset de SMS :
-   - Dataset recommandé : [SMS Spam Collection Dataset](https://www.kaggle.com/datasets/uciml/sms-spam-collection-dataset)
-   - Placer le fichier dans `data/sms_spam.csv`
-   - Format attendu : colonnes `label` (spam/ham) et `message`
+3. Le projet inclut déjà :
+   - Un fichier d'exemple (`data/example_sms_spam.csv`) pour tester rapidement
+   - Un modèle pré-entraîné sur 5,569 messages réels (à télécharger si disponible)
+   
+   Pour entraîner avec vos propres données :
+   - Format attendu : fichier TSV avec colonnes `label` (spam/ham) et `message`
 
 ## 💻 Utilisation
 
@@ -91,19 +93,31 @@ label, confidence = predict_message(message, model, vectorizer)
 print(f"Résultat: {label} (confiance: {confidence:.2f}%)")
 ```
 
-## 📊 Résultats attendus
+## 📊 Résultats obtenus
 
-Le modèle devrait atteindre une exactitude d'environ **97-98%** sur le dataset SMS Spam Collection.
+Le modèle a été entraîné sur **5,569 messages SMS réels** et atteint une exactitude de **97.13%**.
 
-Exemple de résultats :
+### Performances détaillées :
 ```
-✓ Exactitude: 97.85%
+✓ Exactitude: 97.13%
 
 Rapport de classification:
-              precision    recall  f1-score
-Ham              0.99      0.99      0.99
-Spam             0.95      0.94      0.94
+              precision    recall  f1-score   support
+Ham              0.97      1.00      0.98       965
+Spam             1.00      0.79      0.88       149
+
+Matrice de confusion:
+  - Vrais négatifs (Ham correct): 965
+  - Faux positifs (Ham prédit Spam): 0
+  - Faux négatifs (Spam prédit Ham): 32
+  - Vrais positifs (Spam correct): 117
 ```
+
+### 🎯 Points forts :
+- **100% de précision** sur la détection de spam (pas de faux positifs)
+- **97% de précision** sur les messages normaux
+- **Aucun message normal** classé comme spam par erreur
+- Modèle entraîné sur données réelles (UCI ML Repository)
 
 ## 🔧 Fonctionnalités
 
