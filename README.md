@@ -127,13 +127,6 @@ Matrice de confusion:
 - ✅ Mode prédiction interactif
 - ✅ Sauvegarde/chargement du modèle
 
-## 📝 Améliorations possibles
-
-- [ ] Interface web avec Flask
-- [ ] Support de plusieurs langues
-- [ ] Tester d'autres algorithmes (SVM, Random Forest)
-- [ ] API REST pour intégration
-- [ ] Dashboard de monitoring
 
 ## 👤 Auteur
 
